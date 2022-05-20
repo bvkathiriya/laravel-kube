@@ -19,3 +19,6 @@ spec:
           env:
             - name: APP_KEY
               value: base64:cUPmwHx4LXa4Z25HhzFiWCf7TlQmSqnt98pnuiHmzgY=
+    strategy:
+     type: RollingUpdate
+     rollingUp      maxSurge: 50%         
