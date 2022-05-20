@@ -6,7 +6,7 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git branch: 'main', credentialsId: 'laravel', url: 'https://github.com/bvkathiriya/laravel-kube.git'
+        git branch: 'main', credentialsId: 'laravel-demo', url: 'https://github.com/bvkathiriya/laravel-kube.git'
       }
     }
      stage('Build Docker Image'){
