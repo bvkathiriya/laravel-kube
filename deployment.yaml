@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: demo
-          image: kathiriya007/laravel-kube:sanjay-docker-new
+          image: kathiriya007/laravel-kube:latest
           ports:
             - containerPort: 80
           env:
