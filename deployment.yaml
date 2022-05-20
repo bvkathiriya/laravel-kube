@@ -15,10 +15,9 @@ spec:
         - name: demo
           image: kathiriya007/laravel-kube:latest
           imagePullPolicy: Always
-
           ports:
             - containerPort: 80
-          env
+          env:
             - name: APP_KEY
               value: base64:cUPmwHx4LXa4Z25HhzFiWCf7TlQmSqnt98pnuiHmzgY=
          
