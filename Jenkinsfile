@@ -14,7 +14,6 @@ pipeline {
                  sh 'docker version'
                  sh 'docker build -t sanjay-docker-new .'
                  sh 'docker image list'
-                 sh 'docker rmi $(docker images -a -q)'
                  sh 'docker tag sanjay-docker-new kathiriya007/laravel-kube:sanjay-docker-new'
             }
         } 
