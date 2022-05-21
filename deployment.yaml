@@ -2,7 +2,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: laravel-kubernetes-demo
+  namespace: default
 spec:
+  replicas: 2
+  strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: 1
+    maxUnavailable: 25%
   selector:
     matchLabels:
       run: laravel-kubernetes-demo
@@ -12,12 +19,19 @@ spec:
         run: laravel-kubernetes-demo
     spec:
       containers:
-        - name: demo
-          image: kathiriya007/laravel-kube:latest
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 80
-          env:
-            - name: APP_KEY
-              value: base64:cUPmwHx4LXa4Z25HhzFiWCf7TlQmSqnt98pnuiHmzgY=
+      - image: kathiriya007/laravel-kube:latest
+        imagePullPolicy: Always
+        name: demo
+        ports:
+        - containerPort: 80
+        env:
+          - name: APP_KEY
+            value: base64:cUPmwHx4LXa4Z25HhzFiWCf7TlQmSqnt98pnuiHmzgY=
+        readinessProbe:
+          httpGet:
+             path: /
+             port: 80
+             initialDelaySeconds: 5
+             periodSeconds: 5
+             successThreshold: 1
          
