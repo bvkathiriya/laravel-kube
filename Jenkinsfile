@@ -12,8 +12,9 @@ pipeline {
      stage('Build Docker Image'){
             steps{
                  sh 'docker version'
-                 sh 'docker build -t sanjay-docker-new:latest .'
+                 sh 'docker build -t sanjay-docker-new .'
                  sh 'docker image list'
+                 sh 'docker tag sanjay-docker-new kathiriya007/laravel-kube:latest'
                 
             }
         } 
@@ -21,7 +22,7 @@ pipeline {
             steps{
                 withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]) {
                  sh 'docker login -u kathiriya007  -p $PASSWORD'
-                 sh 'docker push kathiriya007/laravel-kube/sanjay-docker-new:latest'
+                 sh 'docker push kathiriya007/laravel-kube:latest'
                 }
             }    
         
