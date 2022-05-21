@@ -14,7 +14,7 @@ pipeline {
                  sh 'docker version'
                  sh 'docker build -t sanjay-docker-new .'
                  sh 'docker image list'
-                 sh 'docker tag sanjay-docker-new kathiriya007/laravel-kube:sanjay-docker-new:latest'
+                 sh 'docker tag sanjay-docker-new kathiriya007/laravel-kube/sanjay-docker-new:latest'
             }
         } 
         stage('docker image Push'){
