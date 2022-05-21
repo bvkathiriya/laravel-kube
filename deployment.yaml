@@ -19,7 +19,7 @@ spec:
         run: laravel-kubernetes-demo
     spec:
       containers:
-      - image: kathiriya007/laravel-kube:latest
+      - image: kathiriya007/laravel-kube/sanjay-docker-new:latest
         imagePullPolicy: Always
         name: demo
         ports:
