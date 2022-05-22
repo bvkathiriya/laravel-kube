@@ -2,12 +2,10 @@ pipeline {
     environment { 
 
         registry = "kathiriya007/laravel-kube" 
-
         registryCredential = 'DOCKER_HUB_PASSWORD' 
-
         dockerImage = '' 
 
-    }
+       }
 
   agent any
 
@@ -18,46 +16,29 @@ pipeline {
         git branch: 'main', url: 'https://github.com/bvkathiriya/laravel-kube.git'
       }
     }
+      
      stage('Building our image') { 
-
-            steps { 
-
-                script { 
-
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
-
-                }
-
+        steps { 
+            script { 
+                dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+               }
             } 
-
-        }
+     }
 
         stage('Deploy our image') { 
-
             steps { 
-
                 script { 
-
                     docker.withRegistry( '', registryCredential ) { 
-
                         dockerImage.push() 
-
                     }
-
                 } 
-
             }
-
         } 
 
         stage('Cleaning up') { 
-
             steps { 
-
                 sh "docker rmi $registry:$BUILD_NUMBER" 
-
             }
-
         } 
 
     
