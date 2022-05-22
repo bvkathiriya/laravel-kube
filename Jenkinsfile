@@ -35,7 +35,8 @@ pipeline {
         stage('Cleaning up') {
             steps{
                 sh 'docker rmi kathiriya007/laravel-kube:$BUILD_NUMBER'
-
+            }
+        }
     
 
    stage('Deploy to K8s') {
