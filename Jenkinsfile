@@ -34,7 +34,7 @@ pipeline {
       
         stage('Cleaning up') {
             steps{
-                sh 'docker rmi kathiriya007/laravel-kube:$n-1BUILD_NUMBER
+                sh 'docker rmi kathiriya007/laravel-kube:$BUILD_NUMBER
 
     
 
